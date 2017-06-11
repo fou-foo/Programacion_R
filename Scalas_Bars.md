@@ -21,12 +21,11 @@
 
     library(RColorBrewer)
     cols <- brewer.pal(length(levels(factor(airquality$Month))), "RdPu") # numero de niveles en el factor
-    names(cols) <- levels(iris$Species)
-    ggplot(data = iris, aes(x = Species, y = Sepal.Length, fill = Species)) + 
-        geom_bar(stat="identity") + 
+    names(cols) <- levels(airquality$Species)
+    ggplot(data = airquality, aes(x = factor(Month), y = Ozone, fill = factor(Month))) +    geom_bar(stat="identity") + 
         scale_fill_manual("legend", values = cols)  +
         xlab('cambiando color por escala') + theme_minimal() +  ggtitle('Gráfica colorida')+guides(fill=FALSE)
 
-![](Scalas_Bars_files/figure-markdown_strict/unnamed-chunk-3-1.png)
+    ## Warning: Removed 37 rows containing missing values (position_stack).
 
-    ##########
+![](Scalas_Bars_files/figure-markdown_strict/unnamed-chunk-3-1.png)
