@@ -20,7 +20,7 @@
 ![](Scalas_Bars_files/figure-markdown_strict/unnamed-chunk-2-1.png)
 
     library(RColorBrewer)
-    cols <- brewer.pal(length(levels(factor(airquality$Month))), "Reds") # numero de niveles en el factor
+    cols <- brewer.pal(length(levels(factor(airquality$Month))), "YlOrRd") # numero de niveles en el factor
     names(cols) <- levels(factor(airquality$Month))
     ggplot(data = airquality, aes(x = factor(Month), y = Ozone, fill = factor(Month))) +    geom_bar(stat="identity") + 
         scale_fill_manual("legend", values = cols)  +
