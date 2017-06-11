@@ -26,7 +26,7 @@ Escala discreta con *scale\_fill\_brewer* de *ggplot*
 Escala discreta con *brewer.pal* de *RcolorBrewer*
 
     library(RColorBrewer)
-    cols <- brewer.pal(length(levels(factor(airquality$Month))), "YlOrRd") # numero de niveles en el factor
+    cols <- brewer.pal(length(levels(factor(airquality$Month))), "Set1") # numero de niveles en el factor
     names(cols) <- levels(factor(airquality$Month))
     ggplot(data = airquality, aes(x = factor(Month), y = Ozone, fill = factor(Month))) +    geom_bar(stat="identity") + 
         scale_fill_manual("legend", values = cols)  +
@@ -38,12 +38,13 @@ Escala discreta con *brewer.pal* de *RcolorBrewer*
 
 Escala continua con *colorRampPalette* de *RcolorBrewer*
 
-    paleta <- colorRampPalette(c("#E7E1EF", "purple4")) # Escala continua personalizada
+    paleta <- colorRampPalette(c("#FFFFB2", "#BD0026")) # Escala continua personalizada
     cols <- paleta(length(levels(factor(airquality$Month))))
-    names(cols) <- levels(airquality$Month)
-    ggplot(data = airquality, aes(x = factor(Month), y = Ozone, fill = factor(Month))) +       geom_bar(stat="identity") + 
-            scale_fill_manual("legend", values = cols)  + theme_minimal() +  ggtitle('Gráfica colorida')+guides(fill=FALSE)
+    cuentas <- aggregate(airquality[,'Ozone' ], list(factor(airquality$Month)), mean, na.rm =TRUE)
+    names(cols) <- levels(factor(airquality$Month))[order(cuentas$x)]
 
-    ## Warning: Removed 37 rows containing missing values (position_stack).
+    ggplot(data = cuentas, aes(x = factor(Group.1), y = x, fill =factor(Group.1) )) +
+            geom_bar(stat="identity") + 
+            scale_fill_manual("legend", values = cols)  + theme_minimal() +  ggtitle('Gráfica colorida')+guides(fill=FALSE)
 
 ![](Scalas_Bars_files/figure-markdown_strict/unnamed-chunk-4-1.png)
