@@ -7,6 +7,7 @@ output:
   variant: markdown_github
 ---
 
+Escala continua con *scale_fill_brewer* de _ggplot_
 
 ```{r}
 library(ggplot2)
@@ -18,6 +19,8 @@ ggplot(data = airquality, aes(x = factor(Month), y = Ozone, fill = factor(Month)
 	guides(fill=FALSE) #quitar leyenda
 ```
 
+Escala discreta con *scale_fill_brewer* de _ggplot_
+
 ```{r}
 ggplot(data = airquality, aes(x = factor(Month), y = Ozone, fill = factor(Month))) + #indicas la variable de agrupamiento -debe ser tipo factor- y la de interes, tambien requieres llenar el parametro 'fill' con la variable con la que agrupa 
 	geom_bar(stat="identity") +   # se construyen las barras
@@ -25,6 +28,8 @@ ggplot(data = airquality, aes(x = factor(Month), y = Ozone, fill = factor(Month)
 	xlab('cambiando color por escala') + theme_minimal() +  ggtitle('Gráfica colorida')+  	guides(fill=FALSE) #quitar leyenda
 
 ```
+
+Escala discreta con *brewer.pal* de _RcolorBrewer_
 
 
 ```{r}
@@ -35,6 +40,8 @@ ggplot(data = airquality, aes(x = factor(Month), y = Ozone, fill = factor(Month)
 	scale_fill_manual("legend", values = cols)	+
 	xlab('cambiando color por escala') + theme_minimal() +  ggtitle('Gráfica colorida')+guides(fill=FALSE)
 ```
+
+Escala continua con *colorRampPalette* de _RcolorBrewer_
 
 ```{r}
 paleta <- colorRampPalette(c("#E7E1EF", "purple4")) # Escala continua personalizada

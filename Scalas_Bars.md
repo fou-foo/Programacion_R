@@ -1,3 +1,5 @@
+Escala continua con *scale\_fill\_brewer* de *ggplot*
+
     library(ggplot2)
     # airquality # datos prueba
     ggplot(data = airquality, aes(x = factor(Month), y = Ozone, fill = factor(Month))) + #indicas la variable de agrupamiento -debe ser tipo factor- y la de interes, tambien requieres llenar el parametro 'fill' con la variable con la que agrupa 
@@ -10,6 +12,8 @@
 
 ![](Scalas_Bars_files/figure-markdown_strict/unnamed-chunk-1-1.png)
 
+Escala discreta con *scale\_fill\_brewer* de *ggplot*
+
     ggplot(data = airquality, aes(x = factor(Month), y = Ozone, fill = factor(Month))) + #indicas la variable de agrupamiento -debe ser tipo factor- y la de interes, tambien requieres llenar el parametro 'fill' con la variable con la que agrupa 
         geom_bar(stat="identity") +   # se construyen las barras
         scale_fill_brewer(palette = 'Set2')+ # la magia de poder escoger facíl el color de la escala 'continua' o discreta
@@ -18,6 +22,8 @@
     ## Warning: Removed 37 rows containing missing values (position_stack).
 
 ![](Scalas_Bars_files/figure-markdown_strict/unnamed-chunk-2-1.png)
+
+Escala discreta con *brewer.pal* de *RcolorBrewer*
 
     library(RColorBrewer)
     cols <- brewer.pal(length(levels(factor(airquality$Month))), "YlOrRd") # numero de niveles en el factor
@@ -29,6 +35,8 @@
     ## Warning: Removed 37 rows containing missing values (position_stack).
 
 ![](Scalas_Bars_files/figure-markdown_strict/unnamed-chunk-3-1.png)
+
+Escala continua con *colorRampPalette* de *RcolorBrewer*
 
     paleta <- colorRampPalette(c("#E7E1EF", "purple4")) # Escala continua personalizada
     cols <- paleta(length(levels(factor(airquality$Month))))
