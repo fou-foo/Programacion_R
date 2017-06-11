@@ -30,8 +30,17 @@ ggplot(data = airquality, aes(x = factor(Month), y = Ozone, fill = factor(Month)
 ```{r}
 library(RColorBrewer)
 cols <- brewer.pal(length(levels(factor(airquality$Month))), "RdPu") # numero de niveles en el factor
-names(cols) <- levels(airquality$Species)
+names(cols) <- levels(factor(airquality$Month))
 ggplot(data = airquality, aes(x = factor(Month), y = Ozone, fill = factor(Month))) + 	geom_bar(stat="identity") + 
 	scale_fill_manual("legend", values = cols)	+
 	xlab('cambiando color por escala') + theme_minimal() +  ggtitle('Gráfica colorida')+guides(fill=FALSE)
+```
+
+```{r}
+library(RColorBrewer)
+paleta <- colorRampPalette(c("#E7E1EF", "purple4"))
+cols <- paleta(length(levels(factor(airquality$Month))))
+names(cols) <- levels(airquality$Month)
+ggplot(data = airquality, aes(x = factor(Month), y = Ozone, fill = factor(Month))) + 	   geom_bar(stat="identity") + 
+    	scale_fill_manual("legend", values = cols)	+ theme_minimal() +  ggtitle('Gráfica colorida')+guides(fill=FALSE)
 ```

@@ -21,7 +21,7 @@
 
     library(RColorBrewer)
     cols <- brewer.pal(length(levels(factor(airquality$Month))), "RdPu") # numero de niveles en el factor
-    names(cols) <- levels(airquality$Species)
+    names(cols) <- levels(factor(airquality$Month))
     ggplot(data = airquality, aes(x = factor(Month), y = Ozone, fill = factor(Month))) +    geom_bar(stat="identity") + 
         scale_fill_manual("legend", values = cols)  +
         xlab('cambiando color por escala') + theme_minimal() +  ggtitle('Gráfica colorida')+guides(fill=FALSE)
@@ -29,3 +29,14 @@
     ## Warning: Removed 37 rows containing missing values (position_stack).
 
 ![](Scalas_Bars_files/figure-markdown_strict/unnamed-chunk-3-1.png)
+
+    library(RColorBrewer)
+    paleta <- colorRampPalette(c("#E7E1EF", "purple4"))
+    cols <- paleta(length(levels(factor(airquality$Month))))
+    names(cols) <- levels(airquality$Month)
+    ggplot(data = airquality, aes(x = factor(Month), y = Ozone, fill = factor(Month))) +       geom_bar(stat="identity") + 
+            scale_fill_manual("legend", values = cols)  + theme_minimal() +  ggtitle('Gráfica colorida')+guides(fill=FALSE)
+
+    ## Warning: Removed 37 rows containing missing values (position_stack).
+
+![](Scalas_Bars_files/figure-markdown_strict/unnamed-chunk-4-1.png)
