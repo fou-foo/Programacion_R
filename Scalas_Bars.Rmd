@@ -1,3 +1,13 @@
+---
+title: "Teeth and Vitamin C"
+author: "José Antonio García Ramirez"
+date: "January 1, 2017"
+output: 
+  md_document:
+  variant: markdown_github
+---
+
+
 ```{r}
 library(ggplot2)
 # airquality # datos prueba
