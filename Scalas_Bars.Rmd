@@ -1,0 +1,30 @@
+```{r}
+library(ggplot2)
+# airquality # datos prueba
+ggplot(data = airquality, aes(x = factor(Month), y = Ozone, fill = factor(Month))) + #indicas la variable de agrupamiento -debe ser tipo factor- y la de interes, tambien requieres llenar el parametro 'fill' con la variable con la que agrupa 
+	geom_bar(stat="identity") +   # se construyen las barras
+	scale_fill_brewer(palette = 'RdPu')+ # la magia de poder escoger facíl el color de la escala 'continua' o discreta
+	xlab('cambiando color por escala') + theme_minimal() +  ggtitle('Gráfica colorida')+  #demas cosas
+	guides(fill=FALSE) #quitar leyenda
+```
+
+```{r}
+ggplot(data = airquality, aes(x = factor(Month), y = Ozone, fill = factor(Month))) + #indicas la variable de agrupamiento -debe ser tipo factor- y la de interes, tambien requieres llenar el parametro 'fill' con la variable con la que agrupa 
+	geom_bar(stat="identity") +   # se construyen las barras
+	scale_fill_brewer(palette = 'Set2')+ # la magia de poder escoger facíl el color de la escala 'continua' o discreta
+	xlab('cambiando color por escala') + theme_minimal() +  ggtitle('Gráfica colorida')+  	guides(fill=FALSE) #quitar leyenda
+
+```
+
+
+```{r}
+library(RColorBrewer)
+cols <- brewer.pal(length(levels(factor(airquality$Month))), "RdPu") # numero de niveles en el factor
+names(cols) <- levels(iris$Species)
+ggplot(data = iris, aes(x = Species, y = Sepal.Length, fill = Species)) + 
+	geom_bar(stat="identity") + 
+	scale_fill_manual("legend", values = cols)	+
+	xlab('cambiando color por escala') + theme_minimal() +  ggtitle('Gráfica colorida')+guides(fill=FALSE)
+
+
+##########

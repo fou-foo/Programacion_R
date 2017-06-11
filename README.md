@@ -1,2 +1,0 @@
-# Programacion_R
-snipes

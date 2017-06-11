@@ -1,0 +1,23 @@
+library(ggplot2)
+library(RColorBrewer)
+summary(iris)
+iris2<-iris
+cols <-paste0(as.character(levels(iris$Species)),"=", colores)
+cols <- paste(cols, collapse=',')
+
+lapply(colores, asigna.Color)
+a<-lapply(colores, asigna.Color)
+ggplot(iris, aes(x = Species, y = Sepal.Length )) + 
+	geom_bar(stat = 'identity', fill = color) + ylab('Viajes') +
+	
+	xlab('') + theme_bw() +  ggtitle('Estaciones con mayor afluencia')
+
+ggplot(iris, aes(x = Species, y = Sepal.Length  )) + 
+	geom_bar(stat = 'identity') +
+	scale_fill_manual("legend", values = c( "black", "orange", "blue"))
+
+iris2<-iris
+iris2$colores<-rep(brewer.pal(5, "RdPu"),30)
+plot(1:150, col=iris2$color)
+ggplot(iris, aes(x = Species, y = Sepal.Length))+
+	geom_bar(stat = 'identity', aes(fill=colores))
