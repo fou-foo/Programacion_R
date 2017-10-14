@@ -35,7 +35,9 @@ library(ggplot2)
 
 ggplot(d, aes( x = x)) + geom_histogram(aes(fill = origen)) +
   scale_fill_manual(name='',values=c(verde_trans, azul_trans) ) +
-    geom_rug(data = rayas, aes(x = x_), color =  c('blue4', 'green4' )) +
+    geom_rug(data = rayas, aes(x = x_), color =  c('blue4', 'green4' ), size = 4, tick = 5) +
   theme_minimal() +  theme(legend.position="none")
 
 ```
+
+
