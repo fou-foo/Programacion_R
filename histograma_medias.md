@@ -24,8 +24,10 @@ Usando ggplot es un poco más verboso pero se ve un poco mejor
 
     ggplot(d, aes( x = x)) + geom_histogram(aes(fill = origen)) +
       scale_fill_manual(name='',values=c(verde_trans, azul_trans) ) +
-        geom_rug(data = rayas, aes(x = x_), color =  c('blue4', 'green4' )) +
+        geom_rug(data = rayas, aes(x = x_), color =  c('blue4', 'green4' ), size = 4, tick = 5) +
       theme_minimal() +  theme(legend.position="none")
+
+    ## Warning: Ignoring unknown parameters: tick
 
     ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 
